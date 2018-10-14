@@ -11,5 +11,5 @@ keywords      = ["egl", "gl", "khronos", "opengl"]
 exclude       = [".gitignore"]
 
 [dependencies]
-khronos = "0.1.1"
-libc    = "0.2.16"
+khronos = {git = "https://github.com/ischeinkman/rust-khronos"}
+libc    = "0.2.43"

@@ -508,7 +508,7 @@ pub fn get_proc_address(procname: &str) -> extern "C" fn() {
     unsafe {
         let string = CString::new(procname).unwrap();
 
-        ffi::eglGetProcAddress(string.as_ptr())
+        ffi::eglGetProcAddress(string.as_ptr() as *const libc::c_char)
     }
 }
 
@@ -543,7 +543,7 @@ pub fn query_string(display: EGLDisplay, name: EGLint) -> Option<&'static CStr> 
         let c_str = ffi::eglQueryString(display, name);
 
         if !c_str.is_null() {
-            Some(CStr::from_ptr(c_str))
+            Some(CStr::from_ptr(c_str as *const i8))
         } else {
             None
         }
