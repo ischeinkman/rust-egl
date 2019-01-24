@@ -543,7 +543,7 @@ pub fn query_string(display: EGLDisplay, name: EGLint) -> Option<&'static CStr> 
         let c_str = ffi::eglQueryString(display, name);
 
         if !c_str.is_null() {
-            Some(CStr::from_ptr(c_str as *const i8))
+            Some(CStr::from_ptr(c_str as *const u8))
         } else {
             None
         }
